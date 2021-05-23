@@ -1,0 +1,30 @@
+.orderForm {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  overflow-y: auto;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 25px 0px rgb(36, 36, 36);
+  padding: 25px;
+  outline: none;
+}
+.orderForm > h2 {
+  margin-bottom: 25px;
+}
+.orderForm__container {
+  margin-bottom: 25px !important;
+}
+.orderForm__customerName {
+  margin-bottom: 50px !important;
+}
+.orderForm__products {
+  margin-bottom: 50px !important;
+}
+.orderForm__row {
+  display: flex;
+  justify-content: space-between;
+}
+.orderForm__qty {
+  margin-left: 25px !important;
+  width: 120px;
+}

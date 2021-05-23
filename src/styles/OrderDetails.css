@@ -1,0 +1,10 @@
+.orderDetailsTable {
+  display: flex;
+  justify-content: center;
+}
+.orderDetailsTable__container {
+  border: 1px solid lightgrey;
+  min-width: 480px;
+  max-width: 70vw;
+  display: flex;
+}

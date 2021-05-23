@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  /* background-color: rgb(238, 238, 238); */
+  align-items: center;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid lightgray;
+  justify-content: space-between;
+}
+.navbar__brand {
+  font-size: 20px;
+}
+.navbar__icons {
+  align-items: center;
+}
+.order__icon {
+  color: #ee5368 !important;
+}
+.product__icon {
+  color: #63e0a4 !important;
+}
+.home__icon {
+  color: rgb(133, 133, 133) !important;
+}

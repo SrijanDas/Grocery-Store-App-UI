@@ -1,0 +1,26 @@
+.newOrder {
+  padding: 70px;
+}
+.submmitBtn {
+  margin-top: 30px !important;
+}
+.products__input {
+  display: flex;
+  margin-top: 20px;
+}
+.product__select {
+  width: 200px;
+}
+.product__qty {
+  margin-left: 10px !important;
+  width: 100px;
+}
+.product_price {
+  margin-left: 25px !important;
+}
+.product__total {
+  margin-left: 50px;
+}
+.deleteBtn {
+  margin-left: 10px !important;
+}
