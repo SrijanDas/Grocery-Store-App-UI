@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
+import "./Products.css";
 import axios from "../../axios";
 import MaterialTable from "material-table";
+import Button from "@material-ui/core/Button";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import AddProductModal from "../../components/AddProductModal/AddProductModal";
 
 function Products() {
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   // fetching all products
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,35 +33,6 @@ function Products() {
     { title: "UOM", field: "uom_name" },
   ];
 
-  const addProductToDb = async (newData) => {
-    const inputUom = String(newData.uom_name).toLowerCase();
-
-    let uomId = 0;
-    if (inputUom === "each") {
-      uomId = 1;
-    } else if (inputUom === "kg") {
-      uomId = 2;
-    } else if (inputUom === "gm") {
-      uomId = 3;
-    } else {
-      uomId = 0;
-    }
-    const newProduct = {
-      product_name: newData.name,
-      uom_id: uomId,
-      price_per_unit: newData.price_per_unit,
-    };
-
-    await axios
-      .post("/insertProduct", newProduct)
-      .then(() => {
-        console.log("Product added...");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const deleteProduct = async (product) => {
     const productToDel = {
       product_id: product.product_id,
@@ -59,9 +42,34 @@ function Products() {
     });
   };
 
+  const handleProductChange = (newProduct) => {
+    // formatting the new product data for frontend
+    let uorm_arr = ["NA", "each", "kg", "gm"];
+    const format = {
+      name: newProduct.product_name,
+      uom_name: uorm_arr[newProduct.uom_id],
+      price_per_unit: newProduct.price_per_unit,
+    };
+    console.log(format);
+    console.log(data);
+    const newData = [...data, format];
+    setData(newData);
+  };
+
   return (
     <div className="table__container">
-      <h2 className="table__header">Products</h2>
+      <div className="header">
+        <h2 className="header__text">Products</h2>
+        <Button
+          onClick={handleClickOpen}
+          className="header__Addbtn"
+          variant="outlined"
+          color="primary"
+          startIcon={<AddBoxIcon />}
+        >
+          Add Product
+        </Button>
+      </div>
       <MaterialTable
         style={{ marginBottom: "20px" }}
         columns={columns}
@@ -76,14 +84,6 @@ function Products() {
           actionsColumnIndex: -1,
         }}
         editable={{
-          onRowAdd: (newData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                setData([...data, newData]);
-                resolve();
-                addProductToDb(newData);
-              }, 1000);
-            }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {
               setTimeout(() => {
@@ -110,6 +110,13 @@ function Products() {
             }),
         }}
       />
+      {open ? (
+        <AddProductModal
+          handleProductChange={handleProductChange}
+          handleClose={handleClose}
+          open={open}
+        />
+      ) : null}
     </div>
   );
 }

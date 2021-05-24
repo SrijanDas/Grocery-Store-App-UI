@@ -1,8 +1,13 @@
 .table__container {
   padding-right: 50px;
   padding-left: 50px;
+  margin-bottom: 50px;
 }
-.table__header {
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.header__text {
   font-weight: 450;
-  margin-bottom: 10px;
 }

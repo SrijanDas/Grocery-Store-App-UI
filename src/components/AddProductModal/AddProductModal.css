@@ -1,0 +1,11 @@
+.addProductForm__name {
+  margin-bottom: 20px !important;
+}
+
+.addProductForm__price {
+  margin-bottom: 30px;
+}
+.addProductForm__uom {
+  margin-bottom: 20px;
+  width: 150px !important;
+}

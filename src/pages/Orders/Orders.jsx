@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../../axios";
 import MaterialTable from "material-table";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
+import "./Orders.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -32,7 +33,6 @@ function Orders() {
     <div className="table__container">
       <h2 className="table__header">All Orders</h2>
       <MaterialTable
-        style={{ marginBottom: "20px" }}
         columns={columns}
         data={orders}
         options={{
