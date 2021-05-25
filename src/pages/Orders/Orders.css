@@ -2,8 +2,12 @@
   padding-right: 50px;
   padding-left: 50px;
   margin-bottom: 50px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 .table__header {
   font-weight: 450;
-  margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
 }

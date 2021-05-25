@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  /* background-color: rgb(238, 238, 238); */
+  background-color: white;
   align-items: center;
   padding-right: 30px;
   padding-left: 30px;
@@ -13,6 +13,7 @@
   font-size: 20px;
 }
 .navbar__icons {
+  display: flex;
   align-items: center;
 }
 .order__icon {

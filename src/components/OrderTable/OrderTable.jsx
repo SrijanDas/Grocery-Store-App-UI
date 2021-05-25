@@ -30,7 +30,6 @@ function OrderTable() {
     <div className="table__container">
       <h2 className="table__header">Recent Orders</h2>
       <MaterialTable
-        style={{ marginBottom: "20px" }}
         columns={columns}
         data={orders}
         options={{ search: false, paging: false, toolbar: false }}

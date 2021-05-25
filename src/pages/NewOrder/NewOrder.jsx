@@ -9,11 +9,13 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "../../axios";
 
 function NewOrder() {
-  const [inputList, setInputList] = useState([{ product: "", quantity: 0 }]);
+  const [inputList, setInputList] = useState([
+    { index: 0, product: "", quantity: "" },
+  ]);
   const [products, setProducts] = useState([]);
-
-  const [productId, setProductId] = useState("");
-  const qty = useRef(0);
+  const [productId, setProductId] = useState([]);
+  const [qty, setQty] = useState([]);
+  const [inputCount, setInputCount] = useState(0);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -25,8 +27,9 @@ function NewOrder() {
   }, []);
 
   function handleAdd() {
+    setInputCount((inputCount += 1));
     const values = [...inputList];
-    values.push({ product: "", quantity: 0 });
+    values.push({ index: inputCount, product: "", quantity: "" });
     setInputList(values);
   }
   const handleDelete = (i) => {
@@ -77,7 +80,9 @@ function NewOrder() {
               label="Qty."
               variant="outlined"
               type="number"
-              ref={qty}
+              onChange={(e) => {
+                setQty({ indx: indx, qty: e.target.value });
+              }}
             />
             <div>
               <p className="product_price">Price:</p>

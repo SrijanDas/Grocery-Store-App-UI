@@ -59,7 +59,9 @@ function Products() {
   return (
     <div className="table__container">
       <div className="header">
-        <h2 className="header__text">Products</h2>
+        <div>
+          <h2 className="header__text">Products</h2>
+        </div>
         <Button
           onClick={handleClickOpen}
           className="header__Addbtn"
@@ -70,46 +72,47 @@ function Products() {
           Add Product
         </Button>
       </div>
-      <MaterialTable
-        style={{ marginBottom: "20px" }}
-        columns={columns}
-        data={data}
-        options={{
-          paging: true,
-          pageSize: 10,
-          pageSizeOptions: [10, 20, 30],
-          showTitle: false,
-          filtering: true,
-          grouping: true,
-          actionsColumnIndex: -1,
-        }}
-        editable={{
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataUpdate = [...data];
-                const index = oldData.tableData.id;
-                dataUpdate[index] = newData;
-                setData([...dataUpdate]);
+      <div className="table">
+        <MaterialTable
+          columns={columns}
+          data={data}
+          options={{
+            paging: true,
+            pageSize: 10,
+            pageSizeOptions: [10, 20, 30],
+            showTitle: false,
+            filtering: true,
+            grouping: true,
+            actionsColumnIndex: -1,
+          }}
+          editable={{
+            onRowUpdate: (newData, oldData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataUpdate = [...data];
+                  const index = oldData.tableData.id;
+                  dataUpdate[index] = newData;
+                  setData([...dataUpdate]);
 
-                resolve();
-              }, 1000);
-            }),
-          onRowDelete: (oldData) =>
-            new Promise((resolve, reject) => {
-              setTimeout(() => {
-                const dataDelete = [...data];
-                const index = oldData.tableData.id;
-                const productToDelete = dataDelete[index];
-                dataDelete.splice(index, 1);
-                setData([...dataDelete]);
+                  resolve();
+                }, 1000);
+              }),
+            onRowDelete: (oldData) =>
+              new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  const dataDelete = [...data];
+                  const index = oldData.tableData.id;
+                  const productToDelete = dataDelete[index];
+                  dataDelete.splice(index, 1);
+                  setData([...dataDelete]);
 
-                resolve();
-                deleteProduct(productToDelete);
-              }, 1000);
-            }),
-        }}
-      />
+                  resolve();
+                  deleteProduct(productToDelete);
+                }, 1000);
+              }),
+          }}
+        />
+      </div>
       {open ? (
         <AddProductModal
           handleProductChange={handleProductChange}

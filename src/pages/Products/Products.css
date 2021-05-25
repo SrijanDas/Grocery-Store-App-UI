@@ -1,12 +1,13 @@
 .table__container {
-  padding-right: 50px;
-  padding-left: 50px;
   margin-bottom: 50px;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 .header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
 }
 .header__text {
   font-weight: 450;

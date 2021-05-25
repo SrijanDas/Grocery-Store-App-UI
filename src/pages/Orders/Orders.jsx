@@ -31,7 +31,9 @@ function Orders() {
 
   return (
     <div className="table__container">
-      <h2 className="table__header">All Orders</h2>
+      <div>
+        <h2 className="table__header">All Orders</h2>
+      </div>
       <MaterialTable
         columns={columns}
         data={orders}
